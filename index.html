@@ -65,7 +65,7 @@
             text-align: center;
             line-height: 1.1;
             font-size: 0.9em;
-            margin: 0 0.2em;
+            margin: 0 0.25em;
             font-weight: 600;
         }
         .num {
@@ -97,7 +97,7 @@
             <span class="flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
                 <span class="text-slate-400">Groq Status:</span>
-                <strong id="active-key-badge" class="text-indigo-400">Geen sleutels</strong>
+                <strong id="active-key-badge" class="text-indigo-400 font-bold">Geen sleutels</strong>
             </span>
         </div>
     </header>
@@ -151,7 +151,7 @@
                 </div>
             </section>
 
-            <!-- Fraction Cheatsheet -->
+            <!-- Fraction Cheatsheet (With Accessible Copiable stacked fractions) -->
             <section class="glass-panel p-5 rounded-2xl transition-all duration-300 hover:border-indigo-500/20">
                 <h2 class="text-sm font-semibold tracking-wide uppercase text-slate-300 mb-4 flex items-center gap-2">
                     <i class="fa-solid fa-table-list text-indigo-400"></i> Breuken Cheatsheet
@@ -167,50 +167,91 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-800/40">
+                            <!-- Accessible row template: uses screen-reader-only real text for copying, and visual styled content for viewing -->
                             <tr class="hover:bg-slate-800/20 transition-colors">
-                                <td class="py-2"><span class="fraction"><span class="num">1</span><span class="den">2</span></span></td>
+                                <td class="py-2">
+                                    <span class="inline-flex items-center align-middle">
+                                        <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;" class="select-all font-mono">1/2</span>
+                                        <span class="fraction select-none pointer-events-none" aria-hidden="true"><span class="num">1</span><span class="den">2</span></span>
+                                    </span>
+                                </td>
                                 <td class="py-2">0,5</td>
                                 <td class="py-2">50%</td>
                                 <td class="py-2 text-right text-slate-500 text-[10px]">De helft</td>
                             </tr>
                             <tr class="hover:bg-slate-800/20 transition-colors">
-                                <td class="py-2"><span class="fraction"><span class="num">1</span><span class="den">3</span></span></td>
+                                <td class="py-2">
+                                    <span class="inline-flex items-center align-middle">
+                                        <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;" class="select-all font-mono">1/3</span>
+                                        <span class="fraction select-none pointer-events-none" aria-hidden="true"><span class="num">1</span><span class="den">3</span></span>
+                                    </span>
+                                </td>
                                 <td class="py-2">0,333...</td>
                                 <td class="py-2">33,3%</td>
                                 <td class="py-2 text-right text-slate-500 text-[10px]">Onbegrensd</td>
                             </tr>
                             <tr class="hover:bg-slate-800/20 transition-colors">
-                                <td class="py-2"><span class="fraction"><span class="num">1</span><span class="den">4</span></span></td>
+                                <td class="py-2">
+                                    <span class="inline-flex items-center align-middle">
+                                        <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;" class="select-all font-mono">1/4</span>
+                                        <span class="fraction select-none pointer-events-none" aria-hidden="true"><span class="num">1</span><span class="den">4</span></span>
+                                    </span>
+                                </td>
                                 <td class="py-2">0,25</td>
                                 <td class="py-2">25%</td>
                                 <td class="py-2 text-right text-slate-500 text-[10px]">Kwart</td>
                             </tr>
                             <tr class="hover:bg-slate-800/20 transition-colors">
-                                <td class="py-2"><span class="fraction"><span class="num">1</span><span class="den">5</span></span></td>
+                                <td class="py-2">
+                                    <span class="inline-flex items-center align-middle">
+                                        <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;" class="select-all font-mono">1/5</span>
+                                        <span class="fraction select-none pointer-events-none" aria-hidden="true"><span class="num">1</span><span class="den">5</span></span>
+                                    </span>
+                                </td>
                                 <td class="py-2">0,2</td>
                                 <td class="py-2">20%</td>
                                 <td class="py-2 text-right text-slate-500 text-[10px]">Deelbaar door 5</td>
                             </tr>
                             <tr class="hover:bg-slate-800/20 transition-colors">
-                                <td class="py-2"><span class="fraction"><span class="num">2</span><span class="den">5</span></span></td>
+                                <td class="py-2">
+                                    <span class="inline-flex items-center align-middle">
+                                        <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;" class="select-all font-mono">2/5</span>
+                                        <span class="fraction select-none pointer-events-none" aria-hidden="true"><span class="num">2</span><span class="den">5</span></span>
+                                    </span>
+                                </td>
                                 <td class="py-2">0,4</td>
                                 <td class="py-2">40%</td>
                                 <td class="py-2 text-right text-slate-500 text-[10px]">Twee vijfde</td>
                             </tr>
                             <tr class="hover:bg-slate-800/20 transition-colors">
-                                <td class="py-2"><span class="fraction"><span class="num">3</span><span class="den">4</span></span></td>
+                                <td class="py-2">
+                                    <span class="inline-flex items-center align-middle">
+                                        <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;" class="select-all font-mono">3/4</span>
+                                        <span class="fraction select-none pointer-events-none" aria-hidden="true"><span class="num">3</span><span class="den">4</span></span>
+                                    </span>
+                                </td>
                                 <td class="py-2">0,75</td>
                                 <td class="py-2">75%</td>
                                 <td class="py-2 text-right text-slate-500 text-[10px]">Driekwart</td>
                             </tr>
                             <tr class="hover:bg-slate-800/20 transition-colors">
-                                <td class="py-2"><span class="fraction"><span class="num">1</span><span class="den">8</span></span></td>
+                                <td class="py-2">
+                                    <span class="inline-flex items-center align-middle">
+                                        <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;" class="select-all font-mono">1/8</span>
+                                        <span class="fraction select-none pointer-events-none" aria-hidden="true"><span class="num">1</span><span class="den">8</span></span>
+                                    </span>
+                                </td>
                                 <td class="py-2">0,125</td>
                                 <td class="py-2">12,5%</td>
                                 <td class="py-2 text-right text-slate-500 text-[10px]">Halve kwart</td>
                             </tr>
                             <tr class="hover:bg-slate-800/20 transition-colors">
-                                <td class="py-2"><span class="fraction"><span class="num">1</span><span class="den">10</span></span></td>
+                                <td class="py-2">
+                                    <span class="inline-flex items-center align-middle">
+                                        <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;" class="select-all font-mono">1/10</span>
+                                        <span class="fraction select-none pointer-events-none" aria-hidden="true"><span class="num">1</span><span class="den">10</span></span>
+                                    </span>
+                                </td>
                                 <td class="py-2">0,1</td>
                                 <td class="py-2">10%</td>
                                 <td class="py-2 text-right text-slate-500 text-[10px]">Deelbaar door 10</td>
@@ -390,7 +431,7 @@ Hoeveel kilometer is dat?`;
                     continue;
                 }
                 
-                // Patroon 2: Getal op regel 1, Getal direct op regel 2 (zonder streepje)
+                // Patroon 2: Getal direct op regel 2 (zonder streepje)
                 if (/^\d+$/.test(current) && /^\d+$/.test(next) && current !== "" && next !== "") {
                     cleanedLines.push(`${current}/${next}`);
                     i += 2;
@@ -565,7 +606,7 @@ Hoeveel kilometer is dat?`;
             document.getElementById('response-status').textContent = "Fout";
         }
 
-        // Markdown parser (Converteert nu ook automatisch 'a/b' breuken naar gestapelde HTML breuken)
+        // Markdown parser (Converteert nu ook automatisch 'a/b' breuken naar perfect kopieerbare gestapelde HTML breuken)
         function renderMarkdownToHTML(text) {
             let html = text
                 .replace(/&/g, "&amp;")
@@ -584,23 +625,28 @@ Hoeveel kilometer is dat?`;
             html = html.replace(/^\s*[\-\*]\s+(.*)$/gim, '<li class="ml-4 list-disc text-xs my-1">$1</li>');
             html = html.replace(/(<\/li>\s*<li class="ml-4 list-disc text-xs my-1">)/g, "</li><li class=\"ml-4 list-disc text-xs my-1\">");
 
-            // --- AUTOMATISCHE VERTICALE BREUK RENDERER ---
-            // Vervangt 'getal/getal' door prachtig gestapelde HTML breuken
-            html = html.replace(/\b(\d+)\/(\d+)\b/g, '<span class="fraction"><span class="num">$1</span><span class="den">$2</span></span>');
+            // --- COPIABLE VERTICAL FRACTION RENDERER ---
+            // Gebruikt een verborgen span voor perfect kopieergedrag ('1/4') en select-none gestileerde elementen voor weergave
+            html = html.replace(/\b(\d+)\/(\d+)\b/g, `
+                <span class="inline-flex items-center align-middle">
+                    <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;" class="select-all font-mono">$1/$2</span>
+                    <span class="fraction select-none pointer-events-none" aria-hidden="true"><span class="num">$1</span><span class="den">$2</span></span>
+                </span>
+            `);
 
             // Line breaks
             html = html.split('\n').map(line => {
                 if (line.trim() === '') return '<div class="h-3"></div>';
-                if (line.startsWith('<h') || line.startsWith('<li')) return line;
+                if (line.startsWith('<h') || line.startsWith('<li') || line.startsWith('<span')) return line;
                 return `<p class="my-1.5 text-xs text-slate-300">${line}</p>`;
             }).join('');
 
             return html;
         }
 
-        // --- IMPROVED CALCULATOR LOGIC WITH VISUAL STACKED FRACTIONS ---
-        let calcDisplay = ""; // Mathematische weergave (die we renderen naar HTML)
-        let calcMath = "";    // Rekenkundige string voor JavaScript (die we evalueren)
+        // --- STABLE CALCULATOR LOGIC (No recursive replacements) ---
+        let calcDisplay = ""; // Mathematische weergave
+        let calcMath = "";    // Rekenkundige string voor JavaScript
 
         function calcPress(displayChar, mathChar) {
             const screen = document.getElementById('calc-screen');
@@ -635,7 +681,7 @@ Hoeveel kilometer is dat?`;
             }
         }
 
-        // Rendert de calculator-string naar echte gestapelde breuken
+        // Rendert de calculator-string veilig (karakter-voor-karakter om recursie te voorkomen!)
         function updateCalcScreen() {
             const screen = document.getElementById('calc-screen');
             if (calcDisplay === "") {
@@ -643,16 +689,39 @@ Hoeveel kilometer is dat?`;
                 return;
             }
             
-            // Vervang operatoren door mooi gestijlde tekens
-            let html = calcDisplay
-                .replace(/ /g, '&nbsp;')
-                .replace(/x/g, '<span class="text-indigo-400 mx-1">x</span>')
-                .replace(/÷/g, '<span class="text-indigo-400 mx-1">÷</span>')
-                .replace(/\+/g, '<span class="text-indigo-400 mx-1">+</span>')
-                .replace(/-/g, '<span class="text-indigo-400 mx-1">-</span>');
+            // 1. Isoleer breuken eerst om te voorkomen dat HTML-tags geraakt worden door operators
+            let temp = calcDisplay.replace(/(\d+)\/(\d+)/g, '__FRAC_$1_$2__');
 
-            // Render breuken als gestapelde HTML (zoekt naar cijfer/cijfer)
-            html = html.replace(/(\d+)\/(\d+)/g, '<span class="fraction text-[13px]"><span class="num">$1</span><span class="den">$2</span></span>');
+            // 2. Loop door de delen en map operatoren veilig karakter-voor-karakter
+            let html = "";
+            let parts = temp.split(/(__FRAC_\d+_\d+__)/);
+            
+            for (let part of parts) {
+                if (part.startsWith('__FRAC_') && part.endsWith('__')) {
+                    let match = part.match(/__FRAC_(\d+)_(\d+)__/);
+                    let num = match[1];
+                    let den = match[2];
+                    // Echte verticale breuk in rekenmachine
+                    html += `<span class="fraction text-[13px]"><span class="num">${num}</span><span class="den">${den}</span></span>`;
+                } else {
+                    for (let i = 0; i < part.length; i++) {
+                        let char = part[i];
+                        if (char === ' ') {
+                            html += '&nbsp;';
+                        } else if (char === 'x') {
+                            html += '<span class="text-indigo-400 mx-1">x</span>';
+                        } else if (char === '÷') {
+                            html += '<span class="text-indigo-400 mx-1">÷</span>';
+                        } else if (char === '+') {
+                            html += '<span class="text-indigo-400 mx-1">+</span>';
+                        } else if (char === '-') {
+                            html += '<span class="text-indigo-400 mx-1">-</span>';
+                        } else {
+                            html += char;
+                        }
+                    }
+                }
+            }
 
             screen.innerHTML = html;
         }
@@ -672,7 +741,7 @@ Hoeveel kilometer is dat?`;
                     }
                 }
             } catch (err) {
-                screen.innerHTML = '<span class="text-red-400">Error</span>';
+                screen.innerHTML = '<span class="text-red-400 font-bold">Error</span>';
                 calcDisplay = "";
                 calcMath = "";
             }
