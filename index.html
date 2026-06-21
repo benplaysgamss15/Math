@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grok HAVO 2 Math Solver</title>
+    <title>Groq HAVO 2 Math Solver</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -67,18 +67,18 @@
     <header class="w-full max-w-7xl mx-auto px-6 pt-8 pb-4 flex flex-col md:flex-row justify-between items-center gap-4 relative z-10 animate-fade-in">
         <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 to-violet-500 flex items-center justify-center shadow-lg shadow-indigo-500/20">
-                <i class="fa-solid fa-brain text-white text-lg"></i>
+                <i class="fa-solid fa-bolt text-white text-lg"></i>
             </div>
             <div>
-                <h1 class="text-xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-100 to-indigo-200 bg-clip-text text-transparent">Grok MathSolver</h1>
-                <p class="text-xs text-indigo-400 font-medium">HAVO 2 Wiskundehulp</p>
+                <h1 class="text-xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-100 to-indigo-200 bg-clip-text text-transparent">Groq MathSolver</h1>
+                <p class="text-xs text-indigo-400 font-medium">Llama-3.3 Powered Havo 2 Rekentool</p>
             </div>
         </div>
         <div class="flex items-center gap-4 text-xs bg-slate-900/80 px-4 py-2 rounded-full border border-slate-800">
             <span class="flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-                <span class="text-slate-400">Actieve Sleutel:</span>
-                <strong id="active-key-badge" class="text-indigo-400">Geen</strong>
+                <span class="text-slate-400">Groq Status:</span>
+                <strong id="active-key-badge" class="text-indigo-400">Geen sleutels</strong>
             </span>
         </div>
     </header>
@@ -93,7 +93,7 @@
             <section class="glass-panel p-5 rounded-2xl relative overflow-hidden transition-all duration-300 hover:border-indigo-500/20">
                 <div class="flex items-center justify-between mb-4">
                     <h2 class="text-sm font-semibold tracking-wide uppercase text-slate-300 flex items-center gap-2">
-                        <i class="fa-solid fa-key text-indigo-400"></i> API Sleutels (Grok/xAI)
+                        <i class="fa-solid fa-key text-indigo-400"></i> Groq API Sleutels
                     </h2>
                     <span class="text-[10px] text-amber-400 bg-amber-500/10 px-2.5 py-1 rounded-full border border-amber-500/20">
                         <i class="fa-solid fa-shield-halved mr-1"></i> Veilig in browser
@@ -101,23 +101,23 @@
                 </div>
                 
                 <p class="text-xs text-slate-400 mb-4 leading-relaxed">
-                    Voer hieronder maximaal 3 Grok API-sleutels in. Als een sleutel limieten bereikt, schakelt het systeem automatisch door naar de volgende.
+                    Voer hieronder maximaal 3 Groq API-sleutels in. Als een sleutel limieten bereikt, schakelt het systeem automatisch door naar de volgende.
                 </p>
 
                 <div class="space-y-3">
                     <div class="relative">
                         <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-[10px] font-bold text-slate-500 px-1.5 py-0.5 bg-slate-950 border border-slate-800 rounded">K1</span>
-                        <input type="password" id="key1" placeholder="xai-..." class="w-full pl-12 pr-10 py-2.5 bg-slate-950/80 border border-slate-800 rounded-xl text-xs focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/20 text-slate-300 transition-all">
+                        <input type="password" id="key1" placeholder="gsk_..." class="w-full pl-12 pr-10 py-2.5 bg-slate-950/80 border border-slate-800 rounded-xl text-xs focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/20 text-slate-300 transition-all">
                         <button onclick="toggleKeyVisibility('key1')" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300"><i class="fa-solid fa-eye text-xs"></i></button>
                     </div>
                     <div class="relative">
                         <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-[10px] font-bold text-slate-500 px-1.5 py-0.5 bg-slate-950 border border-slate-800 rounded">K2</span>
-                        <input type="password" id="key2" placeholder="xai-..." class="w-full pl-12 pr-10 py-2.5 bg-slate-950/80 border border-slate-800 rounded-xl text-xs focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/20 text-slate-300 transition-all">
+                        <input type="password" id="key2" placeholder="gsk_..." class="w-full pl-12 pr-10 py-2.5 bg-slate-950/80 border border-slate-800 rounded-xl text-xs focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/20 text-slate-300 transition-all">
                         <button onclick="toggleKeyVisibility('key2')" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300"><i class="fa-solid fa-eye text-xs"></i></button>
                     </div>
                     <div class="relative">
                         <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-[10px] font-bold text-slate-500 px-1.5 py-0.5 bg-slate-950 border border-slate-800 rounded">K3</span>
-                        <input type="password" id="key3" placeholder="xai-..." class="w-full pl-12 pr-10 py-2.5 bg-slate-950/80 border border-slate-800 rounded-xl text-xs focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/20 text-slate-300 transition-all">
+                        <input type="password" id="key3" placeholder="gsk_..." class="w-full pl-12 pr-10 py-2.5 bg-slate-950/80 border border-slate-800 rounded-xl text-xs focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/20 text-slate-300 transition-all">
                         <button onclick="toggleKeyVisibility('key3')" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300"><i class="fa-solid fa-eye text-xs"></i></button>
                     </div>
                 </div>
@@ -135,7 +135,7 @@
             <!-- Fraction Cheatsheet -->
             <section class="glass-panel p-5 rounded-2xl transition-all duration-300 hover:border-indigo-500/20">
                 <h2 class="text-sm font-semibold tracking-wide uppercase text-slate-300 mb-4 flex items-center gap-2">
-                    <i class="fa-solid fa-calculator text-indigo-400"></i> Breuken Cheatsheet
+                    <i class="fa-solid fa-table-list text-indigo-400"></i> Breuken Cheatsheet
                 </h2>
                 <div class="overflow-x-auto">
                     <table class="w-full text-left text-xs text-slate-300">
@@ -201,40 +201,51 @@
                 </div>
             </section>
 
-            <!-- Quick Calculator -->
+            <!-- Improved Calculator with Fraction Support -->
             <section class="glass-panel p-5 rounded-2xl transition-all duration-300 hover:border-indigo-500/20">
                 <h2 class="text-sm font-semibold tracking-wide uppercase text-slate-300 mb-3 flex items-center gap-2">
-                    <i class="fa-solid fa-square-root-variable text-indigo-400"></i> Rekenmachine
+                    <i class="fa-solid fa-calculator text-indigo-400"></i> Rekenmachine
                 </h2>
                 
                 <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800/60">
                     <!-- Screen -->
                     <input type="text" id="calc-screen" readonly class="w-full bg-slate-900 border border-slate-800 px-3 py-2.5 rounded-lg text-right text-lg font-mono font-medium focus:outline-none text-white tracking-wide" placeholder="0">
                     
-                    <!-- Buttons -->
-                    <div class="grid grid-cols-4 gap-2 mt-3 text-xs font-semibold">
-                        <button onclick="clearCalc()" class="py-2.5 bg-slate-800 text-red-400 hover:bg-slate-700 rounded-lg transition-colors">C</button>
-                        <button onclick="calcPress('/')" class="py-2.5 bg-indigo-900/40 text-indigo-400 hover:bg-indigo-900/60 border border-indigo-500/10 rounded-lg transition-colors">/</button>
-                        <button onclick="calcPress('*')" class="py-2.5 bg-indigo-900/40 text-indigo-400 hover:bg-indigo-900/60 border border-indigo-500/10 rounded-lg transition-colors">*</button>
-                        <button onclick="backspaceCalc()" class="py-2.5 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors"><i class="fa-solid fa-backspace"></i></button>
+                    <!-- Buttons Grid -->
+                    <div class="grid grid-cols-4 gap-2 mt-3 text-xs font-bold">
+                        <!-- Row 1 -->
+                        <button onclick="clearCalc()" class="py-3 bg-slate-800 text-red-400 hover:bg-slate-700 rounded-lg transition-colors">C</button>
+                        <button onclick="calcPress('(', '(')" class="py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg transition-colors">(</button>
+                        <button onclick="calcPress(')', ')')" class="py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg transition-colors">)</button>
+                        <button onclick="backspaceCalc()" class="py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg transition-colors"><i class="fa-solid fa-backspace"></i></button>
 
-                        <button onclick="calcPress('7')" class="py-2.5 bg-slate-900 hover:bg-slate-800 rounded-lg transition-colors">7</button>
-                        <button onclick="calcPress('8')" class="py-2.5 bg-slate-900 hover:bg-slate-800 rounded-lg transition-colors">8</button>
-                        <button onclick="calcPress('9')" class="py-2.5 bg-slate-900 hover:bg-slate-800 rounded-lg transition-colors">9</button>
-                        <button onclick="calcPress('-')" class="py-2.5 bg-indigo-900/40 text-indigo-400 hover:bg-indigo-900/60 border border-indigo-500/10 rounded-lg transition-colors">-</button>
+                        <!-- Row 2 -->
+                        <button onclick="calcPress('7', '7')" class="py-3 bg-slate-900 hover:bg-slate-800 text-slate-100 rounded-lg transition-colors">7</button>
+                        <button onclick="calcPress('8', '8')" class="py-3 bg-slate-900 hover:bg-slate-800 text-slate-100 rounded-lg transition-colors">8</button>
+                        <button onclick="calcPress('9', '9')" class="py-3 bg-slate-900 hover:bg-slate-800 text-slate-100 rounded-lg transition-colors">9</button>
+                        <button onclick="calcPress(' ÷ ', '/')" class="py-3 bg-indigo-950/40 text-indigo-400 hover:bg-indigo-900/60 border border-indigo-500/10 rounded-lg transition-colors">÷</button>
 
-                        <button onclick="calcPress('4')" class="py-2.5 bg-slate-900 hover:bg-slate-800 rounded-lg transition-colors">4</button>
-                        <button onclick="calcPress('5')" class="py-2.5 bg-slate-900 hover:bg-slate-800 rounded-lg transition-colors">5</button>
-                        <button onclick="calcPress('6')" class="py-2.5 bg-slate-900 hover:bg-slate-800 rounded-lg transition-colors">6</button>
-                        <button onclick="calcPress('+')" class="py-2.5 bg-indigo-900/40 text-indigo-400 hover:bg-indigo-900/60 border border-indigo-500/10 rounded-lg transition-colors">+</button>
+                        <!-- Row 3 -->
+                        <button onclick="calcPress('4', '4')" class="py-3 bg-slate-900 hover:bg-slate-800 text-slate-100 rounded-lg transition-colors">4</button>
+                        <button onclick="calcPress('5', '5')" class="py-3 bg-slate-900 hover:bg-slate-800 text-slate-100 rounded-lg transition-colors">5</button>
+                        <button onclick="calcPress('6', '6')" class="py-3 bg-slate-900 hover:bg-slate-800 text-slate-100 rounded-lg transition-colors">6</button>
+                        <button onclick="calcPress(' x ', '*')" class="py-3 bg-indigo-950/40 text-indigo-400 hover:bg-indigo-900/60 border border-indigo-500/10 rounded-lg transition-colors">x</button>
 
-                        <button onclick="calcPress('1')" class="py-2.5 bg-slate-900 hover:bg-slate-800 rounded-lg transition-colors">1</button>
-                        <button onclick="calcPress('2')" class="py-2.5 bg-slate-900 hover:bg-slate-800 rounded-lg transition-colors">2</button>
-                        <button onclick="calcPress('3')" class="py-2.5 bg-slate-900 hover:bg-slate-800 rounded-lg transition-colors">3</button>
-                        <button onclick="evaluateCalc()" class="row-span-2 py-2.5 bg-gradient-to-tr from-indigo-600 to-violet-600 text-white hover:brightness-110 rounded-lg transition-all flex items-center justify-center font-bold text-base">=</button>
+                        <!-- Row 4 -->
+                        <button onclick="calcPress('1', '1')" class="py-3 bg-slate-900 hover:bg-slate-800 text-slate-100 rounded-lg transition-colors">1</button>
+                        <button onclick="calcPress('2', '2')" class="py-3 bg-slate-900 hover:bg-slate-800 text-slate-100 rounded-lg transition-colors">2</button>
+                        <button onclick="calcPress('3', '3')" class="py-3 bg-slate-900 hover:bg-slate-800 text-slate-100 rounded-lg transition-colors">3</button>
+                        <button onclick="calcPress(' - ', '-')" class="py-3 bg-indigo-950/40 text-indigo-400 hover:bg-indigo-900/60 border border-indigo-500/10 rounded-lg transition-colors">-</button>
 
-                        <button onclick="calcPress('0')" class="col-span-2 py-2.5 bg-slate-900 hover:bg-slate-800 rounded-lg transition-colors">0</button>
-                        <button onclick="calcPress('.')" class="py-2.5 bg-slate-900 hover:bg-slate-800 rounded-lg transition-colors">.</button>
+                        <!-- Row 5 -->
+                        <button onclick="calcPress('0', '0')" class="py-3 bg-slate-900 hover:bg-slate-800 text-slate-100 rounded-lg transition-colors">0</button>
+                        <button onclick="calcPress('.', '.')" class="py-3 bg-slate-900 hover:bg-slate-800 text-slate-100 rounded-lg transition-colors">.</button>
+                        <!-- Dedicated Fraction Button (Adds a division slash to build fractions like 3/4) -->
+                        <button onclick="calcPress('/', '/')" class="py-3 bg-violet-950/40 text-violet-400 hover:bg-violet-900/60 border border-violet-500/10 rounded-lg transition-colors">a/b</button>
+                        <button onclick="calcPress(' + ', '+')" class="py-3 bg-indigo-950/40 text-indigo-400 hover:bg-indigo-900/60 border border-indigo-500/10 rounded-lg transition-colors">+</button>
+
+                        <!-- Row 6 -->
+                        <button onclick="evaluateCalc()" class="col-span-4 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 hover:brightness-110 text-white rounded-lg transition-all font-bold text-sm tracking-widest shadow-lg shadow-indigo-500/10">=</button>
                     </div>
                 </div>
             </section>
@@ -258,8 +269,8 @@
                     <textarea id="questionInput" rows="10" class="w-full bg-slate-950/80 border border-slate-800 rounded-xl p-4 text-sm font-mono focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/20 text-slate-200 transition-all leading-relaxed" placeholder="Typ of plak hier je wiskundevraag..."></textarea>
                 </div>
 
-                <button id="solve-btn" onclick="solveMathWithGrok()" class="py-3 px-6 bg-gradient-to-r from-indigo-500 to-violet-600 hover:brightness-110 text-white font-semibold rounded-xl text-sm transition-all shadow-lg shadow-indigo-500/10 flex items-center justify-center gap-2.5 active:scale-95">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i> Los som op met Grok AI
+                <button id="solve-btn" onclick="solveMathWithGroq()" class="py-3 px-6 bg-gradient-to-r from-indigo-500 to-violet-600 hover:brightness-110 text-white font-semibold rounded-xl text-sm transition-all shadow-lg shadow-indigo-500/10 flex items-center justify-center gap-2.5 active:scale-95">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Los som op met Groq AI
                 </button>
             </section>
 
@@ -267,7 +278,7 @@
             <section class="glass-panel p-5 rounded-2xl min-h-[300px] flex flex-col relative overflow-hidden transition-all duration-300 hover:border-indigo-500/20">
                 <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-800/60">
                     <h2 class="text-sm font-semibold tracking-wide uppercase text-slate-300 flex items-center gap-2">
-                        <i class="fa-solid fa-circle-check text-emerald-400"></i> Oplossing &amp; Berekening
+                        <i class="fa-solid fa-circle-check text-emerald-400"></i> Oplossing &amp; Berekening (Groq)
                     </h2>
                     <span id="response-status" class="text-[10px] text-slate-500">Wacht op invoer...</span>
                 </div>
@@ -285,8 +296,8 @@
                 <div id="output-area" class="text-sm leading-relaxed text-slate-300 space-y-4 flex-grow font-sans select-text overflow-y-auto max-h-[500px]">
                     <div class="flex flex-col items-center justify-center text-slate-500 py-16 text-center">
                         <i class="fa-solid fa-lightbulb text-4xl mb-3 text-slate-700"></i>
-                        <p class="font-medium text-xs">Klik hierboven op 'Los som op met Grok AI' om de berekening te starten.</p>
-                        <p class="text-[10px] text-slate-600 max-w-[280px] mt-1">Zorg ervoor dat u minimaal één geldige Grok API-sleutel heeft ingevoerd.</p>
+                        <p class="font-medium text-xs">Klik hierboven op 'Los som op met Groq AI' om de berekening te starten.</p>
+                        <p class="text-[10px] text-slate-600 max-w-[280px] mt-1">Zorg ervoor dat u minimaal één geldige Groq API-sleutel heeft ingevoerd.</p>
                     </div>
                 </div>
             </section>
@@ -297,7 +308,7 @@
 
     <!-- Footer -->
     <footer class="w-full border-t border-slate-900 bg-slate-950/40 py-6 mt-12 text-center text-xs text-slate-500 relative z-10">
-        <p>© 2026 Grok MathSolver — Volledig client-side &amp; beveiligd.</p>
+        <p>© 2026 Groq MathSolver — Volledig client-side &amp; beveiligd.</p>
     </footer>
 
     <!-- JavaScript logic -->
@@ -325,10 +336,9 @@ Hoeveel kilometer is dat?`;
 
         // --- API KEY ROTATION & FALLBACK LOGIC ---
         let apiKeys = ["", "", ""];
-        let activeKeyIndex = null;
 
         function loadKeys() {
-            const savedKeys = localStorage.getItem('grok_api_keys');
+            const savedKeys = localStorage.getItem('groq_api_keys');
             if (savedKeys) {
                 try {
                     const parsed = JSON.parse(savedKeys);
@@ -348,9 +358,9 @@ Hoeveel kilometer is dat?`;
             apiKeys[1] = document.getElementById('key2').value.trim();
             apiKeys[2] = document.getElementById('key3').value.trim();
             
-            localStorage.setItem('grok_api_keys', JSON.stringify(apiKeys));
+            localStorage.setItem('groq_api_keys', JSON.stringify(apiKeys));
             updateBadgeStatus();
-            alert("API Sleutels succesvol lokaal opgeslagen in de browser!");
+            alert("Groq API Sleutels succesvol lokaal opgeslagen in de browser!");
         }
 
         function clearKeys() {
@@ -359,7 +369,7 @@ Hoeveel kilometer is dat?`;
                 document.getElementById('key1').value = "";
                 document.getElementById('key2').value = "";
                 document.getElementById('key3').value = "";
-                localStorage.removeItem('grok_api_keys');
+                localStorage.removeItem('groq_api_keys');
                 updateBadgeStatus();
             }
         }
@@ -372,7 +382,7 @@ Hoeveel kilometer is dat?`;
                 badge.textContent = `${configuredCount} geladen`;
                 badge.className = "text-indigo-400 font-bold";
             } else {
-                badge.textContent = "Geen";
+                badge.textContent = "Geen sleutels";
                 badge.className = "text-red-400 font-bold";
             }
         }
@@ -382,8 +392,8 @@ Hoeveel kilometer is dat?`;
             el.type = el.type === 'password' ? 'text' : 'password';
         }
 
-        // Main calculation handler
-        async function solveMathWithGrok() {
+        // Main calculation handler using Groq
+        async function solveMathWithGroq() {
             const activeKeys = [
                 document.getElementById('key1').value.trim(),
                 document.getElementById('key2').value.trim(),
@@ -391,13 +401,13 @@ Hoeveel kilometer is dat?`;
             ].filter(k => k !== "");
 
             if (activeKeys.length === 0) {
-                showError("Geen API Key ingevoerd. Voer ten minste één geldige Grok API-sleutel in bij 'API Sleutels'.");
+                showError("Geen API Key ingevoerd. Voer ten minste één geldige Groq API-sleutel in bij 'API Sleutels'.");
                 return;
             }
 
             const inputSom = document.getElementById('questionInput').value.trim();
             if (!inputSom) {
-                showError("Voer eerst een reken- of wiskundesom in.");
+                showError("Voer eerst een wiskundevraag in.");
                 return;
             }
 
@@ -416,23 +426,23 @@ Hoeveel kilometer is dat?`;
             for (let i = 0; i < activeKeys.length; i++) {
                 const currentKey = activeKeys[i];
                 const keyNumber = i + 1;
-                loadingText.textContent = `Poging met API Sleutel ${keyNumber}...`;
+                loadingText.textContent = `Poging met Groq Sleutel ${keyNumber}...`;
                 
                 try {
-                    const response = await fetch("https://api.x.ai/v1/chat/completions", {
+                    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
                             "Authorization": `Bearer ${currentKey}`
                         },
                         body: JSON.stringify({
-                            model: "grok-2", 
+                            model: "llama-3.3-70b-versatile", 
                             messages: [
                                 {
                                     role: "system",
                                     content: `Je bent een vriendelijke en extreem nauwkeurige wiskunde-assistent voor havo-scholieren.
-                                    Leg de berekeningen helder, stap voor stap uit in het Nederlands. 
-                                    Sluit af met een duidelijk en overzichtelijk antwoordenblok.`
+                                    Leg de wiskundige berekeningen heel overzichtelijk, stap voor stap uit in het Nederlands. 
+                                    Sluit af met een heel duidelijk 'Antwoorden'-overzicht.`
                                 },
                                 {
                                     role: "user",
@@ -454,19 +464,18 @@ Hoeveel kilometer is dat?`;
                     outputArea.innerHTML = renderMarkdownToHTML(aiContent);
                     statusIndicator.textContent = `Succesvol (Sleutel ${keyNumber})`;
                     success = true;
-                    break; // break out of key loop
+                    break; 
                 } catch (error) {
                     console.warn(`Sleutel ${keyNumber} mislukt:`, error.message);
                     lastError = error.message;
-                    // Key failed, loop will automatically try index i+1
                 }
             }
 
             overlay.classList.add('hidden');
 
             if (!success) {
-                showError(`Alle ingevoerde API-sleutels zijn mislukt. Laatste foutmelding van de API: "${lastError}".`);
-                statusIndicator.textContent = "Fout bij berekening";
+                showError(`Alle ingevoerde Groq API-sleutels zijn mislukt. Laatste foutmelding: "${lastError}".`);
+                statusIndicator.textContent = "Fout";
             }
         }
 
@@ -475,7 +484,7 @@ Hoeveel kilometer is dat?`;
                 <div class="p-4 bg-red-500/10 border border-red-500/20 text-red-200 rounded-xl flex items-start gap-3">
                     <i class="fa-solid fa-triangle-exclamation text-lg mt-0.5"></i>
                     <div>
-                        <h4 class="font-bold text-xs text-red-300">Oeps! Er ging iets mis</h4>
+                        <h4 class="font-bold text-xs text-red-300">Fout opgetreden</h4>
                         <p class="text-xs mt-1 leading-relaxed">${msg}</p>
                     </div>
                 </div>
@@ -483,7 +492,7 @@ Hoeveel kilometer is dat?`;
             document.getElementById('response-status').textContent = "Fout";
         }
 
-        // Simple Markdown parser to make AI output look structured and formatted
+        // Markdown parser
         function renderMarkdownToHTML(text) {
             let html = text
                 .replace(/&/g, "&amp;")
@@ -500,8 +509,6 @@ Hoeveel kilometer is dat?`;
             
             // Unordered Lists
             html = html.replace(/^\s*[\-\*]\s+(.*)$/gim, '<li class="ml-4 list-disc text-xs my-1">$1</li>');
-            
-            // Clean consecutive list tags
             html = html.replace(/(<\/li>\s*<li class="ml-4 list-disc text-xs my-1">)/g, "</li><li class=\"ml-4 list-disc text-xs my-1\">");
 
             // Line breaks
@@ -514,38 +521,65 @@ Hoeveel kilometer is dat?`;
             return html;
         }
 
-        // --- CALC LOGIC ---
-        function calcPress(val) {
+        // --- IMPROVED CALCULATOR LOGIC WITH FRACTIONS ---
+        let calcDisplay = ""; // What the user sees
+        let calcMath = "";    // What we evaluate in JavaScript
+
+        function calcPress(displayChar, mathChar) {
             const screen = document.getElementById('calc-screen');
-            if (screen.value === 'Error') screen.value = '';
-            screen.value += val;
+            if (screen.value === 'Error' || screen.value === '0') {
+                calcDisplay = "";
+                calcMath = "";
+            }
+            calcDisplay += displayChar;
+            calcMath += mathChar;
+            screen.value = calcDisplay;
         }
 
         function clearCalc() {
+            calcDisplay = "";
+            calcMath = "";
             document.getElementById('calc-screen').value = '';
         }
 
         function backspaceCalc() {
             const screen = document.getElementById('calc-screen');
             if (screen.value === 'Error') {
-                screen.value = '';
+                clearCalc();
             } else {
-                screen.value = screen.value.slice(0, -1);
+                // Remove last character from display, but handle trailing spacing for operators
+                if (calcDisplay.endsWith(' ')) {
+                    calcDisplay = calcDisplay.slice(0, -3);
+                    calcMath = calcMath.slice(0, -3);
+                } else {
+                    calcDisplay = calcDisplay.slice(0, -1);
+                    calcMath = calcMath.slice(0, -1);
+                }
+                screen.value = calcDisplay || '0';
             }
         }
 
         function evaluateCalc() {
             const screen = document.getElementById('calc-screen');
             try {
-                // Safe evaluation replacement of normal eval
-                // Only allows numbers, basic operators, decimal point
-                const cleanInput = screen.value.replace(/[^0-9+\-*/.]/g, '');
-                if (cleanInput) {
-                    const result = Function(`"use strict"; return (${cleanInput})`)();
-                    screen.value = Math.round(result * 100000) / 100000; // Round to max 5 decimal places
+                if (calcMath) {
+                    // Safe calculation using JS Function context (prevents eval-injection)
+                    // Allows basic arithmetic operations and parentheses
+                    const cleanMath = calcMath.replace(/[^0-9+\-*/().]/g, '');
+                    if (cleanMath) {
+                        const result = Function(`"use strict"; return (${cleanMath})`)();
+                        const rounded = Math.round(result * 100000) / 100000;
+                        screen.value = rounded;
+                        
+                        // Sync display and math value with the calculated outcome
+                        calcDisplay = rounded.toString();
+                        calcMath = rounded.toString();
+                    }
                 }
             } catch (err) {
                 screen.value = 'Error';
+                calcDisplay = "";
+                calcMath = "";
             }
         }
     </script>
