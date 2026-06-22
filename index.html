@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Groq HAVO 2 Math Solver</title>
+    <title>Google</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -79,6 +79,67 @@
 </head>
 <body class="text-slate-100 min-h-screen flex flex-col antialiased font-sans">
 
+    <!-- ================= GOOGLE DISGUISE OVERLAY ================= -->
+    <div id="google-page" class="fixed inset-0 bg-white text-gray-950 font-sans z-50 flex flex-col justify-between select-none">
+        <!-- Header -->
+        <div class="flex justify-end items-center gap-4 p-4 text-xs text-gray-600">
+            <span class="hover:underline cursor-pointer">Gmail</span>
+            <span class="hover:underline cursor-pointer">Afbeeldingen</span>
+            <button class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-500 text-base"><i class="fa-solid fa-bars"></i></button>
+            <button class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-2 rounded-md transition-colors shadow">Inloggen</button>
+        </div>
+        
+        <!-- Center search area -->
+        <div class="flex flex-col items-center justify-center flex-grow pb-24">
+            <!-- Google Logo: Eerste 'G' opent de Solver -->
+            <div class="flex text-[80px] font-sans font-medium tracking-tighter mb-8 select-none">
+                <span onclick="switchToSolver()" class="text-[#4285F4] hover:opacity-80 active:scale-95 transition-all cursor-pointer">G</span>
+                <span class="text-[#EA4335]">o</span>
+                <span class="text-[#FBBC05]">o</span>
+                <span class="text-[#4285F4]">g</span>
+                <span class="text-[#34A853]">l</span>
+                <span class="text-[#EA4335]">e</span>
+            </div>
+            
+            <!-- Search Box Mock -->
+            <div class="w-full max-w-[584px] px-4">
+                <div class="flex items-center gap-3 w-full border border-gray-200 hover:border-transparent hover:shadow-[0_1px_6px_rgba(32,33,36,0.28)] rounded-full px-4 py-3 bg-white transition-shadow text-sm">
+                    <i class="fa-solid fa-magnifying-glass text-gray-400"></i>
+                    <input type="text" readonly class="flex-grow bg-transparent focus:outline-none text-gray-900 cursor-default" placeholder="">
+                    <i class="fa-solid fa-microphone text-[#4285F4] cursor-pointer"></i>
+                    <i class="fa-solid fa-camera text-[#EA4335] cursor-pointer"></i>
+                </div>
+            </div>
+            
+            <!-- Buttons Mock -->
+            <div class="flex gap-3 mt-8">
+                <button class="bg-[#f8f9fa] hover:bg-[#f1f3f4] border border-[#f8f9fa] hover:border-[#dadce0] text-sm text-[#3c4043] px-4 py-2 rounded transition-all">Google zoeken</button>
+                <button class="bg-[#f8f9fa] hover:bg-[#f1f3f4] border border-[#f8f9fa] hover:border-[#dadce0] text-sm text-[#3c4043] px-4 py-2 rounded transition-all">Ik doe een gok</button>
+            </div>
+            
+            <p class="text-xs text-gray-600 mt-6">Google aangeboden in: <span class="text-blue-800 hover:underline cursor-pointer">English</span></p>
+        </div>
+        
+        <!-- Footer Mock -->
+        <div class="bg-[#f2f2f2] text-xs text-gray-500 border-t border-[#e4e4e4]">
+            <div class="px-6 py-3 border-b border-[#e4e4e4]">Nederland</div>
+            <div class="px-6 py-3 flex flex-wrap justify-between gap-4">
+                <div class="flex gap-6">
+                    <span class="hover:underline cursor-pointer">Over</span>
+                    <span class="hover:underline cursor-pointer">Adverteren</span>
+                    <span class="hover:underline cursor-pointer">Bedrijf</span>
+                    <span class="hover:underline cursor-pointer">Hoe Zoeken werkt</span>
+                </div>
+                <div class="flex gap-6">
+                    <span class="hover:underline cursor-pointer">Privacy</span>
+                    <span class="hover:underline cursor-pointer">Voorwaarden</span>
+                    <span class="hover:underline cursor-pointer">Instellingen</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================= -->
+
     <!-- Top Glow -->
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-48 bg-gradient-to-b from-indigo-500/10 to-transparent blur-[120px] pointer-events-none"></div>
 
@@ -94,11 +155,15 @@
             </div>
         </div>
         <div class="flex items-center gap-4 text-xs bg-slate-900/80 px-4 py-2 rounded-full border border-slate-800">
-            <span class="flex items-center gap-2">
+            <span class="flex items-center gap-2 mr-2 border-r border-slate-800 pr-3">
                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
                 <span class="text-slate-400">Groq Status:</span>
                 <strong id="active-key-badge" class="text-indigo-400 font-bold">Geen sleutels</strong>
             </span>
+            <!-- Disguise Button -->
+            <button onclick="switchToGoogle()" class="text-slate-400 hover:text-white transition-colors flex items-center gap-1.5 font-semibold">
+                <i class="fa-brands fa-google text-indigo-400"></i> Disguise
+            </button>
         </div>
     </header>
 
@@ -151,110 +216,24 @@
                 </div>
             </section>
 
-            <!-- Fraction Cheatsheet (With Accessible Copiable stacked fractions) -->
+            <!-- Fraction Cheatsheet (Scrollable and generated up to 1/100) -->
             <section class="glass-panel p-5 rounded-2xl transition-all duration-300 hover:border-indigo-500/20">
                 <h2 class="text-sm font-semibold tracking-wide uppercase text-slate-300 mb-4 flex items-center gap-2">
-                    <i class="fa-solid fa-table-list text-indigo-400"></i> Breuken Cheatsheet
+                    <i class="fa-solid fa-table-list text-indigo-400"></i> Breuken Cheatsheet (1/2 t/m 1/100)
                 </h2>
-                <div class="overflow-x-auto">
+                <!-- Fixed Height Scroll Container -->
+                <div class="overflow-y-auto max-h-[250px] border border-slate-800/40 rounded-xl">
                     <table class="w-full text-left text-xs text-slate-300">
-                        <thead>
-                            <tr class="border-b border-slate-800/80 text-slate-500 uppercase tracking-wider text-[10px]">
-                                <th class="pb-2">Breuk</th>
-                                <th class="pb-2">Decimaal</th>
-                                <th class="pb-2">Procent</th>
-                                <th class="pb-2 text-right">Eigenschap</th>
+                        <thead class="sticky top-0 bg-slate-900/90 backdrop-blur z-10 border-b border-slate-800">
+                            <tr class="text-slate-500 uppercase tracking-wider text-[10px]">
+                                <th class="p-2.5">Breuk</th>
+                                <th class="p-2.5">Decimaal</th>
+                                <th class="p-2.5">Procent</th>
+                                <th class="p-2.5 text-right">Eigenschap</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-slate-800/40">
-                            <tr class="hover:bg-slate-800/20 transition-colors">
-                                <td class="py-2">
-                                    <span class="inline-flex items-center align-middle">
-                                        <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;" class="select-all font-mono">1/2</span>
-                                        <span class="fraction select-none pointer-events-none" aria-hidden="true"><span class="num">1</span><span class="den">2</span></span>
-                                    </span>
-                                </td>
-                                <td class="py-2">0,5</td>
-                                <td class="py-2">50%</td>
-                                <td class="py-2 text-right text-slate-500 text-[10px]">De helft</td>
-                            </tr>
-                            <tr class="hover:bg-slate-800/20 transition-colors">
-                                <td class="py-2">
-                                    <span class="inline-flex items-center align-middle">
-                                        <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;" class="select-all font-mono">1/3</span>
-                                        <span class="fraction select-none pointer-events-none" aria-hidden="true"><span class="num">1</span><span class="den">3</span></span>
-                                    </span>
-                                </td>
-                                <td class="py-2">0,333...</td>
-                                <td class="py-2">33,3%</td>
-                                <td class="py-2 text-right text-slate-500 text-[10px]">Onbegrensd</td>
-                            </tr>
-                            <tr class="hover:bg-slate-800/20 transition-colors">
-                                <td class="py-2">
-                                    <span class="inline-flex items-center align-middle">
-                                        <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;" class="select-all font-mono">1/4</span>
-                                        <span class="fraction select-none pointer-events-none" aria-hidden="true"><span class="num">1</span><span class="den">4</span></span>
-                                    </span>
-                                </td>
-                                <td class="py-2">0,25</td>
-                                <td class="py-2">25%</td>
-                                <td class="py-2 text-right text-slate-500 text-[10px]">Kwart</td>
-                            </tr>
-                            <tr class="hover:bg-slate-800/20 transition-colors">
-                                <td class="py-2">
-                                    <span class="inline-flex items-center align-middle">
-                                        <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;" class="select-all font-mono">1/5</span>
-                                        <span class="fraction select-none pointer-events-none" aria-hidden="true"><span class="num">1</span><span class="den">5</span></span>
-                                    </span>
-                                </td>
-                                <td class="py-2">0,2</td>
-                                <td class="py-2">20%</td>
-                                <td class="py-2 text-right text-slate-500 text-[10px]">Deelbaar door 5</td>
-                            </tr>
-                            <tr class="hover:bg-slate-800/20 transition-colors">
-                                <td class="py-2">
-                                    <span class="inline-flex items-center align-middle">
-                                        <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;" class="select-all font-mono">2/5</span>
-                                        <span class="fraction select-none pointer-events-none" aria-hidden="true"><span class="num">2</span><span class="den">5</span></span>
-                                    </span>
-                                </td>
-                                <td class="py-2">0,4</td>
-                                <td class="py-2">40%</td>
-                                <td class="py-2 text-right text-slate-500 text-[10px]">Twee vijfde</td>
-                            </tr>
-                            <tr class="hover:bg-slate-800/20 transition-colors">
-                                <td class="py-2">
-                                    <span class="inline-flex items-center align-middle">
-                                        <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;" class="select-all font-mono">3/4</span>
-                                        <span class="fraction select-none pointer-events-none" aria-hidden="true"><span class="num">3</span><span class="den">4</span></span>
-                                    </span>
-                                </td>
-                                <td class="py-2">0,75</td>
-                                <td class="py-2">75%</td>
-                                <td class="py-2 text-right text-slate-500 text-[10px]">Driekwart</td>
-                            </tr>
-                            <tr class="hover:bg-slate-800/20 transition-colors">
-                                <td class="py-2">
-                                    <span class="inline-flex items-center align-middle">
-                                        <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;" class="select-all font-mono">1/8</span>
-                                        <span class="fraction select-none pointer-events-none" aria-hidden="true"><span class="num">1</span><span class="den">8</span></span>
-                                    </span>
-                                </td>
-                                <td class="py-2">0,125</td>
-                                <td class="py-2">12,5%</td>
-                                <td class="py-2 text-right text-slate-500 text-[10px]">Halve kwart</td>
-                            </tr>
-                            <tr class="hover:bg-slate-800/20 transition-colors">
-                                <td class="py-2">
-                                    <span class="inline-flex items-center align-middle">
-                                        <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;" class="select-all font-mono">1/10</span>
-                                        <span class="fraction select-none pointer-events-none" aria-hidden="true"><span class="num">1</span><span class="den">10</span></span>
-                                    </span>
-                                </td>
-                                <td class="py-2">0,1</td>
-                                <td class="py-2">10%</td>
-                                <td class="py-2 text-right text-slate-500 text-[10px]">Deelbaar door 10</td>
-                            </tr>
+                        <tbody id="cheatsheet-body" class="divide-y divide-slate-800/40">
+                            <!-- Dynamic rows will be rendered here by JS -->
                         </tbody>
                     </table>
                 </div>
@@ -390,6 +369,7 @@ Vragen:
         window.addEventListener('DOMContentLoaded', () => {
             resetProblem();
             loadKeys();
+            generateAllFractionsCheatsheet();
             
             // --- AUTOMATISCHE OPSCHOON-FILTER BIJ INPUT (Elimineert dubbel plakken en extra spaties direct) ---
             document.getElementById('questionInput').addEventListener('input', (e) => {
@@ -402,6 +382,53 @@ Vragen:
                 }
             });
         });
+
+        // --- GOOGLE DISGUISE FUNCTIONS ---
+        function switchToSolver() {
+            document.getElementById('google-page').classList.add('hidden');
+        }
+
+        function switchToGoogle() {
+            document.getElementById('google-page').classList.remove('hidden');
+        }
+
+        // --- ALL FRACTIONS GENERATOR (1/2 tot 1/100) ---
+        function generateAllFractionsCheatsheet() {
+            const tbody = document.getElementById('cheatsheet-body');
+            tbody.innerHTML = ''; // Maak leeg
+            
+            for (let noemer = 2; noemer <= 100; noemer++) {
+                // Bereken decimaal en percentage
+                const decValue = (1 / noemer).toFixed(4).replace(/\.?0+$/, ''); // verwijder overtollige nullen
+                const percentage = ((1 / noemer) * 100).toFixed(2).replace(/\.?0+$/, '') + '%';
+                
+                // Bepaal eigenschap
+                let eigenschap = 'Oneven noemer';
+                if (noemer % 10 === 0) {
+                    eigenschap = 'Deelbaar door 10';
+                } else if (noemer % 5 === 0) {
+                    eigenschap = 'Deelbaar door 5';
+                } else if (noemer % 2 === 0) {
+                    eigenschap = 'Even noemer';
+                }
+
+                // Genereer de veilige (copiable) rij
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-800/20 transition-colors";
+                tr.innerHTML = `
+                    <td class="p-2.5">
+                        <span class="inline-flex items-center align-middle">
+                            <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;" class="select-all font-mono">1/${noemer}</span>
+                            <span class="fraction select-none pointer-events-none" aria-hidden="true"><span class="num">1</span><span class="den">${noemer}</span></span>
+                        </span>
+                    </td>
+                    <td class="p-2.5 text-slate-200">${decValue.replace('.', ',')}</td>
+                    <td class="p-2.5 text-slate-200">${percentage.replace('.', ',')}</td>
+                    <td class="p-2.5 text-right text-slate-500 text-[10px]">${eigenschap}</td>
+                `;
+                tbody.appendChild(tr);
+            }
+        }
 
         function resetProblem() {
             document.getElementById('questionInput').value = DEFAULT_PROBLEM;
@@ -635,7 +662,6 @@ Vragen:
             html = html.replace(/(<\/li>\s*<li class="ml-4 list-disc text-xs my-1">)/g, "</li><li class=\"ml-4 list-disc text-xs my-1\">");
 
             // --- COPIABLE VERTICAL FRACTION RENDERER (COMPACT ONE-LINER) ---
-            // Belangrijk: Dit MOET op één enkele regel staan om te voorkomen dat de line-splitter er witruimte-paragrafen tussen plakt!
             html = html.replace(/\b(\d+)\/(\d+)\b/g, '<span class="inline-flex items-center align-middle"><span style="position: absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0;" class="select-all font-mono">$1/$2</span><span class="fraction select-none pointer-events-none" aria-hidden="true"><span class="num">$1</span><span class="den">$2</span></span></span>');
 
             // Line breaks
